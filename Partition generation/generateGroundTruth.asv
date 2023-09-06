@@ -1,0 +1,27 @@
+% https://github.com/SoftwareImpacts/SIMPAC-2020-14
+function [X, BA] = generateGroundTruth(numCluster, pointNumber, interDist)
+BA = zeros(pointNumber, numCluster);
+
+% [X, clustPoints, idx] = generateData(pi / 2, pi / 8, numCluster, interDist, interDist, 5, 1, 2, pointNumber);
+ [X, clustPoints, idx] =  generateData(pi / 2, pi / 8, 5, 15, 15, 5, 1, 2, 200);
+
+figure
+
+plot( X(1:clustPoints(1),1), X(1:clustPoints(1),2), "+");
+hold on
+
+plot( X(clustPoints(1)+1:clustPoints(2),1), X(clustPoints(1)+1:clustPoints(2),2), "+");
+hold on
+
+plot( X(clustPoints(2)+1:clustPoints(3),1), X(clustPoints(2)+1:clustPoints(3),2), "+");
+hold on
+
+plot( X(clustPoints(3)+1:clustPoints(4),1), X(clustPoints(3)+1:clustPoints(4),2), "+");
+
+for i=1:pointNumber
+    BA(i,idx(i)) = 1; 
+end
+
+
+end
+
