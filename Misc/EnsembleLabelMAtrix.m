@@ -1,4 +1,4 @@
-function LM = EnsembleLabelMAtrix(PI)
+function LM = EnsembleLabelMatrix(PI)
 
 M = size(PI,1);
 N = size(PI{1},1);

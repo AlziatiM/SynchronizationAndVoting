@@ -1,4 +1,4 @@
-function [voteMatrix, V_cell] = syncVoting(pi_ref, PI,  U, voting)
+function voteMatrix = syncVoting(pi_ref, PI,  U, voting)
 
 
 M = size(PI,1);
@@ -9,7 +9,7 @@ V_cell = cell(M,1);
 
 
 pi_refLV = fromBAtoLV(pi_ref);
-PI_LM =EnsembleLabelMAtrix(PI);
+PI_LM =EnsembleLabelMatrix(PI);
 
 switch voting
     case 'simple'

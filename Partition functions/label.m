@@ -1,15 +1,14 @@
 
 
-%find the label associated to a point in a specific partition
-% function index = label(varargin)
-% if size(varargin) < 3
-%     [pointId, pi] = varargin{1:2};
-% else
-%     [pointId,piId, PI] = varargin{1:3};
-%     pi = PI{piId};
-% end
 
-function index = label(pointId, pi)
-pi_row = pi(pointId,:);
-[~,index] = max(pi_row); 
+
+function index = label(pointId, BA)
+%LABEL find the label associated to an element in a specific Binary
+%           Association Matrix
+% 
+% index = LABEL(pointId, BA)
+% 
+% pointId is the row number of the interested element
+BA_row = BA(pointId,:);
+[~,index] = max(BA_row); 
 end

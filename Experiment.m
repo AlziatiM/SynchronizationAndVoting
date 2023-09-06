@@ -1,8 +1,10 @@
 function experiment(variableK)
-N = 5000;
+
+
+N = 300;
 M = 50;
-K = 20;
-perc = 1;
+K = 5;
+perc = 0.0;
 
 [X,pi_gt] = generateGroundTruth(K,N,15);
 PI = generatePartitionKMeans(M, X,K, variableK);

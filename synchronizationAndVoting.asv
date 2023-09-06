@@ -21,8 +21,20 @@ function consensus = synchronizationAndVoting(method,voting,PI,trueK,perc, pi_re
 %           case of weighted voting, if selected. By default is one of the 
 %           partitions with the greatest number of cluster labels.
 % 
-% OUTPUT:
-% consensus - the label vector associated to the consensus partition
+% OUTPUT
+
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+
+
 switch method
     case 'NMF'
         permSync = @SV_NMF;
@@ -38,7 +50,7 @@ end
 
 
 
-%globally synchronized permutations
+
 U = permSync(PI,perc,trueK);
 
 

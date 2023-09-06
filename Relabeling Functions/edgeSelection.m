@@ -1,29 +1,36 @@
-function pos = edgeSelection(M,perc)
-l = 1:M*M;
+function edgesIdx = edgeSelection(M,perc)
+availableEdges = 1:M*M;
 count = M+1;
 b = 1:+count:M*M;
 
-l(b) = [];
+availableEdges(b) = [];
 
-E = floor((M*(M-1)/2)*perc);
-adj = spalloc(M, M, E);
-i = randperm(M*(M-1));
+numEdges = floor((M*(M-1)/2)*perc);
+adj = spalloc(M, M, numEdges);
+randomPerm = randperm(M*(M-1));
 
-idx = l(:, i);
+shuffledEdges = availableEdges(:, randomPerm);
 
-adj(idx(1:E)) = 1;
+adj(shuffledEdges(1:numEdges)) = 1;
 [i,j,~] = find(adj);
 
-pos = [i,j];
+edgesIdx = [i,j];
 
- unEdg = unique(pos(:,1));
+ unEdg = unique(edgesIdx(:,1));
 missing = setdiff( 1:M, unEdg);
 
-if ~isempty(missing)
 
+
+if ~isempty(missing)
+ 
  for i = 1: size(missing,2) 
-    pos = [pos; [missing(1,i), datasample([1:i-1,i+1:M],1)]];
+    edgesIdx = [edgesIdx; [missing(1,i), datasample([1:i-1,i+1:M],1)]];
  end
+    disp('Not enough edges are present in the permutation Graph. Required edges are added.')
+    update = ['Old percentage: ', num2str(perc),'   New percentage: ', num2str(size(edgesIdx,1)/(M*(M-1)/2)) ];
+    disp(update)
+
+
 end
 
 end
