@@ -1,5 +1,13 @@
 function weights = computeWeights(pi_refLV,PI_LM, WeightType)
-
+%COMPUTEWEIGHTS computes the weights associated to each partition of an
+%ensemble wrt to a reference partition using a choosen method. 
+% 
+%weights = computeWeights(pi_refLV,PI_LM, WeightType)
+% 
+% The reference and the ensemble are respectevely a N x 1 label vector and
+% a M x N label matrix
+%
+% the output is a M x 1 vector 
 weights = [];
 
 if WeightType == "average"

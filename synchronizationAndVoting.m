@@ -1,5 +1,5 @@
 function consensus = synchronizationAndVoting(method,voting,PI,trueK,perc, pi_ref)
-% SYNCHRONIZATIONANDVOTING solve the clsuter ensemble problem using one of 
+% SYNCHRONIZATIONANDVOTING solve the cluster ensemble problem using one of 
 %                          the provided implementations.
 % 
 % consensus = SYNCHRONIZATIONANDVOTING(method,voting,PI,trueK,perc, pi_ref)
@@ -7,9 +7,10 @@ function consensus = synchronizationAndVoting(method,voting,PI,trueK,perc, pi_re
 % INPUTS:
 % 
 % method - the name of the specific synchronization technique that is used 
-%           for relabeling      
+%           for relabeling. The available options are 'EIG', 'NMF', 'QM'.     
 % voting - the name of the specific voting criteria that is used to obtain 
-%           the consensus partition.
+%           the consensus partition. The available options are 'simple', 
+%           'weightSimple', 'weightAverage'.
 % PI - an M x 1 cell array representing the Ensemble. Each cell contains 
 %       the Binary Association Matrix of a partition.
 % trueK - the number of cluster of the ground truth. Some methods don't
@@ -41,8 +42,8 @@ end
 %globally synchronized permutations
 U = permSync(PI,perc,trueK);
 
-
-voteMatrix = syncVoting(pi_ref,PI, U, voting);
+%obtain the cumulative votes 
+voteMatrix = syncVoting(voting,PI, U,pi_ref);
 
 consensusBA = pluralityVoting(voteMatrix);
 consensus = fromBAtoLV(consensusBA);
