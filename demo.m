@@ -4,9 +4,9 @@ addpath(genpath("Partition generation"));
 addpath(genpath("Relabeling Functions"));
 addpath(genpath("Voting Functions"));
 
-N = 300;
-M = 50;
-K = 5;
+N = 100;
+M = 20;
+K = 50;
 perc = 0.9;
 variableK = true;
 
