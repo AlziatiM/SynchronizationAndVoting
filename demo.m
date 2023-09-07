@@ -1,17 +1,21 @@
-function experiment(variableK)
-
+addpath(genpath("ExtLib"));
+addpath(genpath("Misc"));
+addpath(genpath("Partition generation"));
+addpath(genpath("Relabeling Functions"));
+addpath(genpath("Voting Functions"));
 
 N = 300;
 M = 50;
 K = 5;
-perc = 0.0;
+perc = 0.9;
+variableK = true;
 
 [X,pi_gt] = generateGroundTruth(K,N,15);
 PI = generatePartitionKMeans(M, X,K, variableK);
 
 
 pi_gtLV = fromBAtoLV(pi_gt);
-PI_LM = EnsembleLabelMAtrix(PI);
+PI_LM = EnsembleLabelMatrix(PI);
 
 
 [~,Kvector] = cellfun(@size,PI);
@@ -33,7 +37,3 @@ resultsANMI = ['Average NMI: ', num2str(ANMI)];
 disp(resultsANMI);
 resultsNMIgt = ['NMI w.r.t the ground truth: ', num2str(NMI_gt)];
 disp(resultsNMIgt);
-
-
-
-end

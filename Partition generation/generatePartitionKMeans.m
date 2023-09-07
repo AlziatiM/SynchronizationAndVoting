@@ -1,5 +1,8 @@
-function PI = generatePartitionKMeans(numPartitions, X , trueK,variableK)
-PI = cell(numPartitions,1);
+function PI = generatePartitionKMeans(M, X , trueK,variableK)
+%GENERATEAPRTITIONKMEANS generate M partitions from the data points X with
+%trueK cluster labels
+
+PI = cell(M,1);
 
 if variableK
     if trueK > 4
@@ -16,7 +19,7 @@ end
 
 k_min = trueK -r;
 k_max = trueK+ r;
-for i = 1: numPartitions
+for i = 1: M
     K = randi([k_min k_max]);
     partition = kmeans(X,K, "Start","uniform");
     pi_i = fromLVtoBA(partition);
