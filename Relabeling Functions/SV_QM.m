@@ -1,7 +1,30 @@
 function  syncedU = SV_QM(PI, perc, trueK)
+% SV_QM apply the synchronization and voting algorithm on a cluster
+%        ensemble by employing the QuickMatch algorithm
+% 
+% syncedU = SV_QM(PI, perc, trueK)
+% 
+% INPUTS:
+% 
+% PI - an M x 1 cell array representing the Ensemble. Each cell contains 
+%       the Binary Association Matrix of a partition.
+% perc - percentage of edges created with the graph, from 0.0 to 1.0. Values
+%           too low are automatically handled, creating the minimum number 
+%           of edges required for a fully-connected graph
+% trueK - the number of clusters of the ground truth. Some methods don't
+%           require it, in that case any integer value can be inserted. For
+%           the QuickMatch algorithm it is not required since it is
+%           automatically estimated 
+%
+% OUTPUT:
+% syncedU - an M x 1 cell array which represents the absolute permutations block vector U
 M = size(PI,1);
 
 [~,Kvector] = cellfun(@size,PI);
+
+
+% Generate the graph of pairwise permutations with specified percentage of
+% edges
 
 PermGlobalMatrix = zeros(sum(Kvector));
 PermGlobalCell = mat2cell(PermGlobalMatrix, Kvector, Kvector);
@@ -22,7 +45,9 @@ end
 
 PermGlobal_IN = cell2mat(PermGlobalCell)+eye(sum(Kvector));
 
-
+% % find the vector of synchronized permutations U via QuickMatch. This
+% algorithm was taken from the implementation of Tron et al.
+% https://sites.bu.edu/tron/2018/07/13/fast-multi-image-matching-via-density-based-clustering-quickmatch/
 %%%%%%%%%%%%%%%%%%
 dim  = Kvector;
 cumDim = [0;cumsum(dim(1:end-1))];

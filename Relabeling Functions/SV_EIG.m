@@ -15,7 +15,7 @@ function  syncedU = SV_EIG(PI, perc, trueK)
 %           require it, in that case any integer value can be inserted.
 %
 % OUTPUT:
-% syncedU - the absolute permutations block vector U
+% syncedU - an M x 1 cell array which represents the absolute permutations block vector U
 
 M = size(PI,1);
 
@@ -48,7 +48,8 @@ end
 PermGlobal_IN = cell2mat(PermGlobalCell)+eye(sum(Kvector));
 
 
-% find the vector of synchronized permutations U 
+% find the vector of synchronized permutations U by finding the
+% eigenvectors
 
 [u,~,~] = svd(PermGlobal_IN);
 
