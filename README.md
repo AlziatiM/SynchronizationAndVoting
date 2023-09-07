@@ -49,6 +49,7 @@ Option      | Description
 # Authors
 
 Michele Alziati (michele.alziati@mail.polimi.it) 
+
 Fiore Amarù  (fiore.amaru@mail.polimi.it)
 
 
@@ -58,5 +59,6 @@ Fiore Amarù  (fiore.amaru@mail.polimi.it)
     
 [2] [Synchronisation of Partial Multi-Matchings via Non-negative Factorisations](https://www.sciencedirect.com/science/article/pii/S0031320319301293)
 F. Bernard, J. Thunberg, J. Goncalves, C. Theobalt. Pattern Recognition. 2019 
-[3] Fast Multi-Image Matching via Density-Based Clustering (https://openaccess.thecvf.com/content_ICCV_2017/papers/Tron_Fast_Multi-Image_Matching_ICCV_2017_paper.pdf)
+
+[3] [Fast Multi-Image Matching via Density-Based Clustering](https://openaccess.thecvf.com/content_ICCV_2017/papers/Tron_Fast_Multi-Image_Matching_ICCV_2017_paper.pdf)
  R. Tron and X. Zhou. 
