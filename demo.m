@@ -20,7 +20,7 @@ PI_LM = EnsembleLabelMatrix(PI);
 
 [~,Kvector] = cellfun(@size,PI);
 
-%COMMENTARE QUESTA COSA
+%selecting as reference partition the one with the highest number of clusters.
 [~, maxK_idx] = max(Kvector);
 pi_ref = PI{maxK_idx};
 
